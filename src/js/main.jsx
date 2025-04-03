@@ -11,8 +11,21 @@ import '../styles/index.css'
 // components
 import Home from './components/Home';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+let counter = 0;
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+setInterval(() => {
+  counter++;
+  const countingForAChange = String(counter).padStart(4, "0").split("");
+
+  root.render(
+    <React.StrictMode>
+      <Home
+        golast={countingForAChange[0]}
+        gothird={countingForAChange[1]}
+        gosecond={countingForAChange[2]}
+        gofirst={countingForAChange[3]}
+      />
+    </React.StrictMode>
+  );
+}, 1000);
